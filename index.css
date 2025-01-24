@@ -284,6 +284,11 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: 0.5s;
+}
+
+#link .linkContainer a img:hover {
+    scale: 1.1;
 }
 
 #link .linkContainer p {
