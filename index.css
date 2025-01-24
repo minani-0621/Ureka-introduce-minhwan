@@ -251,8 +251,28 @@ main {
 }
 
 @media screen and (max-width: 830px) {
+    header div {
+        padding-left: 40px;
+    }
+
+    header div a {
+        font-size: 14px;
+    }
+
+    header nav {
+        gap: 20px;
+        padding: 0;
+    }
+
+    header nav a {
+        font-size: 14px;
+        padding-right: 10px;
+    }
+
     .planCard {
         padding: 0;
+        width: 300px;
+        padding: 10px 20px;
     }
     
     .planCard ul {
