@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조민환의 소개</title>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        header {
+            width: 100%;
+            height: 100px;
+            background-color: #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header > div {
+            padding-left: 70px;
+        }
+
+        header > div > a {
+            text-decoration: none;
+            color: ghostwhite;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        header > nav {
+            width: 300px;
+            height: 100%;
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding-right: 50px;
+
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #eee;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        header nav a:hover {
+            color: orange;
+        }
+
+        header nav:has(a:hover) a:not(:hover) {
+            color: #555;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            margin-top: 100px;
+        }
+
+        #profile {
+            width: 100%;
+            height: auto;
+            background-color:rgb(68, 67, 67);
+            background-image: linear-gradient(to bottom, rgb(68, 67, 67), #ddd);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #profile > h1 {
+            font-size: 48px;
+            color: black;
+        }
+
+        #profile > div {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 2;
+            color: black;
+        }
+
+        #profile > img {
+            border: 1px solid #111;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            box-shadow: 7px 7px 15px black;
+            margin-top: 50px;
+            margin-bottom: 10px;
+            transition: 0.5s
+        }
+
+        #profile > img:hover {
+            scale: 1.15;
+        }
+
+        #profile > div {
+            padding-bottom: 50px;
+        }
+
+        #experience {
+            width: 100%;
+            height: auto;
+            padding: 50px auto;
+            background-color: #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #experience h1 {
+            text-align: center;
+            font-size: 36px;
+            padding-top: 50px;
+            padding-bottom: 10px;
+        }
+
+        #experience h2 {
+            text-align: center;
+            padding-bottom: 30px;
+        }
+
+        #experience .imgContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            padding-bottom: 80px;
+        }
+
+        #experience .imgContainer div {
+            position: relative;
+        }
+
+        #experience .imgContainer div {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 15px #222;
+            transition: 0.5s;
+            z-index: 1;
+        }
+
+        #experience .imgContainer div .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 1;
+            transition: 0.5s;
+            z-index: 10;
+        }
+
+        #experience .imgContainer div .cover:hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 0;
+            transition: 0.5s;
+            z-index: 10;
+        }
+
+        #experience img {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px black;
+            transition: 0.5s;
+        }
+
+        #experience .imgContainer div:hover {
+            scale: 1.2;
+            cursor: pointer;
+        }
+
+        /* #experience .imgContainer div .cover {
+            filter: blur(3px);
+        } */
+         
+        /* #experience .imgContainer:has(div:hover) div:not(:hover) {
+            scale: 0.9;
+            filter: blur(3px);
+        } */
+        
+        /* #experience .imgContainer div:has(.cover:hover) .cover:not(:hover) {
+            scale: 0.9;
+            filter: blur(3px);
+        } */
+
+        #plan {
+            width: 100%;
+            height: auto;
+            background-color: rgb(68, 67, 67);
+            background-image: linear-gradient(to bottom, #ddd, rgb(100, 100, 100));
+            margin: 0px;
+            padding-top: 20px;
+            padding-bottom: 70px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #plan h1 {
+            text-align: center;
+            font-size: 36px;
+            margin: 10px 0;
+            padding: 50px 0px;
+            color: black;
+        }
+
+        .planContainer {
+            display: flex;
+            padding: 0px 200px;
+            justify-content: space-around;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .planCard {
+            width: 400px;
+            height: auto;
+            padding: 40px 30px;
+            background-color: #ddd;
+            border: 1px solid #aaa;
+            border-radius: 30px;
+            box-shadow: 5px 5px 15px black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .planCard ul {
+            list-style: none;
+            font-size: 24px;
+            padding: 0;
+            line-height: 2;
+        }
+
+        @media screen and (max-width: 830px) {
+            .planCard {
+                padding: 0;
+            }
+            
+            .planCard ul {
+                font-size: 16px;
+            }
+
+            .planContainer {
+                padding: 0;
+            }
+        }
+
+        #link {
+            width: auto;
+            height: auto;
+            margin: 0;
+            padding: 100px;
+            background-color: rgb(68, 67, 67);
+            background-image: linear-gradient(to bottom, rgb(100, 100, 100), rgb(68, 67, 67));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        }
+
+        #link .linkContainer a img{
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #link .linkContainer p {
+            text-align: center;
+            color: #ddd;
+        }
+
+        footer {
+            width: 100%;
+            height: 100px;
+            background-color: #222;
+            font-weight: 300;
+            font-size: small;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(34, 34, 34, 0.75)';
+                header.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.5)';
+            }else {
+                header.style.backgroundColor = 'rgba(34, 34, 34, 1)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll("a[data-scroll]");
+
+        links.forEach(link => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                const targetId = link.getAttribute("data-scroll");
+                const targetElement = document.querySelector(`#${targetId}`);
+
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop;
+                    window.scrollTo({
+                        top: offsetTop - 100,
+                        behavior: "smooth",
+                    });
+                }
+            });
+        });
+    });
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div><a href="#" data-scroll="profile">FE DEV</a></div>
+            <nav>
+                <a href="#" data-scroll="profile">프로필</a>
+                <a href="#" data-scroll="experience">경험</a>
+                <a href="#" data-scroll="plan">계획</a>
+                <a href="#" data-scroll="link">링크</a>
+            </nav>
+        </header>
+        <main>
+            <section id="profile">
+                <img src="/자기소개/image/minhwan.jpg" alt="프로필 이미지">
+                <h1>조민환</h1>
+                <div>
+                    💁‍♂️&nbsp;&nbsp;나이: 26 (00년생)
+                    <br>
+                    👨‍🎓&nbsp;&nbsp;전공: 컴퓨터공학
+                    <br>
+                    👀&nbsp;&nbsp;MBTI: ESFJ
+                </div>
+            </section>
+            <section id="experience">
+                <h1>😀 가장 좋았던 경험 😀</h1>
+                <h2>" 2학년에 미국 여행 갔을 때 찍었던 사진들입니다~✈️ "</h2>
+                <div class="imgContainer">
+                    <div>
+                        <img src="/자기소개/image/newyork7.jpg" alt="newyork7">
+                        <div class="cover">자유의 여신상</div>
+                    </div>
+                    <div>
+                        <img src="/자기소개/image/newyork5.jpg" alt="newyork5">
+                        <div class="cover">브라이언트 공원</div>
+                    </div>
+                    <div>
+                        <img src="/자기소개/image/newyork4.jpg" alt="newyork4">
+                        <div class="cover">피자와 감튀</div>
+                    </div>
+                    <div>
+                        <img src="/자기소개/image/newyork3.jpg" alt="newyork3">
+                        <div class="cover">타임스퀘어</div>
+                    </div>
+                    <div>
+                        <img src="/자기소개/image/newyork2.jpg" alt="newyork2">
+                        <div class="cover">뉴욕 하늘</div>
+                    </div>
+                    <div>
+                        <img src="/자기소개/image/newyork1.jpg" alt="newyork1">
+                        <div class="cover">써밋 원 밴더빌트</div>
+                    </div>
+                    <div>
+                        <img src="/자기소개/image/newyork6.jpg" alt="newyork6">
+                        <div class="cover">뉴욕 길거리</div>
+                    </div>
+                    <div>
+                        <img src="/자기소개/image/newyork7.jpg" alt="newyork7">
+                        <div class="cover">자유의 여신상</div>
+                    </div>
+                </div>
+            </section>
+            <section id="plan">
+                <h1>🎯 앞으로의 계획 🎯</h1>
+                <div class="planContainer">
+                    <div class="planCard">
+                        <h2>유레카에서의 목표</h2>
+                        <ul>
+                            <li>✅ JS & TypeScript 마스터 하기</li>
+                            <li>✅ CI/CD 익숙해지기</li>
+                            <li>✅ Jest를 활용한 유닛 테스트 해보기</li>
+                            <li>✅ 좋은 분들이랑 팀플 즐겁게 하기</li>
+                        </ul>
+                    </div>
+                    <div class="planCard">
+                        <h2>개인적인 목표</h2>
+                        <ul>
+                            <li>☑️ 매일 코테 한 문제씩 풀기</li>
+                            <li>☑️ 야구장에 직관하러 가기</li>
+                            <li>☑️ 취직하기 전에 해외여행 가기</li>
+                            <li>☑️ 취뽀하기</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="link">
+                <div class="linkContainer">
+                    <a href="https://github.com/minani-0621">
+                        <img src="/자기소개/image/github.png" alt="github">
+                    </a>
+                    <p>Github</p>
+                </div>
+                <div class="linkContainer">
+                    <a href="https://www.instagram.com/minani_0621/?hl=ko">
+                        <img src="/자기소개/image/instagram.png" alt="instagram">
+                    </a>
+                    <p>Instargram</p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            CopyrightⓒMINHWAN CHO, All Rights Reserved
+        </footer>
+    </div>
+</body>
+</html>
